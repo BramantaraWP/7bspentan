@@ -2,85 +2,99 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jadwal Kelas 7B</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jadwal 7B Hari Ini</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    const jadwal7B = {
+      "Senin": [
+        { waktu: "08.00 - 08.40", mapel: "PJOK" },
+        { waktu: "08.40 - 09.20", mapel: "PJOK" },
+        { waktu: "09.20 - 10.00", mapel: "PJOK" },
+        { waktu: "10.30 - 11.10", mapel: "IPA" },
+        { waktu: "11.10 - 11.50", mapel: "SBDP" },
+        { waktu: "11.50 - 12.30", mapel: "Bahasa Indonesia" },
+        { waktu: "13.20 - 14.00", mapel: "Bahasa Indonesia" },
+        { waktu: "14.00 - 14.40", mapel: "Bahasa Indonesia" }
+      ],
+      "Selasa": [
+        { waktu: "07.00 - 07.30", mapel: "Pertemuan Pagi Ceria" },
+        { waktu: "07.30 - 08.10", mapel: "PPKn" },
+        { waktu: "08.10 - 08.50", mapel: "Bahasa Indonesia" },
+        { waktu: "08.50 - 09.30", mapel: "Bahasa Indonesia" },
+        { waktu: "10.00 - 10.40", mapel: "Bahasa Indonesia" },
+        { waktu: "10.40 - 11.20", mapel: "Bahasa Indonesia" },
+        { waktu: "11.20 - 12.00", mapel: "Bahasa Indonesia" },
+        { waktu: "12.00 - 12.40", mapel: "Bahasa Indonesia" },
+        { waktu: "13.20 - 14.00", mapel: "INF (Informatika)" },
+        { waktu: "14.00 - 14.40", mapel: "INF (Informatika)" }
+      ],
+      "Rabu": [
+        { waktu: "07.00 - 07.40", mapel: "PPKn" },
+        { waktu: "07.40 - 08.20", mapel: "PPKn" },
+        { waktu: "08.20 - 09.00", mapel: "IPA" },
+        { waktu: "09.00 - 09.40", mapel: "IPA" }
+      ],
+      "Kamis": [
+        { waktu: "07.00 - 07.40", mapel: "Matematika" },
+        { waktu: "07.40 - 08.20", mapel: "Matematika" },
+        { waktu: "08.20 - 09.00", mapel: "Bahasa Inggris" },
+        { waktu: "09.00 - 09.40", mapel: "Bahasa Inggris" },
+        { waktu: "10.00 - 10.40", mapel: "IPA" },
+        { waktu: "10.40 - 11.20", mapel: "IPA" },
+        { waktu: "11.20 - 12.00", mapel: "Matematika" },
+        { waktu: "13.20 - 14.00", mapel: "IPS" },
+        { waktu: "14.00 - 14.40", mapel: "IPS" }
+      ],
+      "Jumat": [
+        { waktu: "07.00 - 07.30", mapel: "Pertemuan Pagi Ceria" },
+        { waktu: "07.30 - 08.10", mapel: "Ekstrakurikuler" },
+        { waktu: "08.10 - 08.50", mapel: "Ekstrakurikuler" },
+        { waktu: "09.20 - 10.00", mapel: "Kokurikuler" },
+        { waktu: "10.00 - 10.40", mapel: "Kokurikuler" },
+        { waktu: "10.40 - 11.20", mapel: "Kokurikuler" },
+        { waktu: "11.20 - 12.00", mapel: "Kokurikuler" },
+        { waktu: "13.20 - 13.50", mapel: "Kokurikuler" }
+      ]
+    };
+
+    function tampilkanJadwal() {
+      const hariIni = new Date().toLocaleDateString('id-ID', { weekday: 'long' });
+      const mapelHariIni = jadwal7B[capitalize(hariIni)] || [];
+      const list = document.getElementById("jadwal-list");
+      const label = document.getElementById("hari");
+
+      label.textContent = capitalize(hariIni);
+      list.innerHTML = mapelHariIni.map(item =>
+        `<tr>
+          <td class="border px-4 py-2 text-center">${item.waktu}</td>
+          <td class="border px-4 py-2">${item.mapel}</td>
+        </tr>`
+      ).join('');
+    }
+
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    }
+
+    window.onload = tampilkanJadwal;
+  </script>
 </head>
-<body class="bg-white text-black font-sans p-6">
-
-  <div class="max-w-4xl mx-auto">
-
-    <div class="grid gap-6">
-      
-      <!-- Senin -->
-      <div class="border border-gray-300 rounded-xl p-5">
-        <h2 class="text-xl font-semibold mb-3">Senin</h2>
-        <ul class="space-y-2">
-          <li class="flex justify-between border-b pb-1"><span>08.00 - 08.40</span><span>PJOK</span></li>
-          <li class="flex justify-between border-b pb-1"><span>08.40 - 09.20</span><span>PJOK</span></li>
-          <li class="flex justify-between border-b pb-1"><span>10.30 - 11.10</span><span>IPA</span></li>
-          <li class="flex justify-between border-b pb-1"><span>11.10 - 11.50</span><span>SBDP</span></li>
-          <li class="flex justify-between border-b pb-1"><span>11.50 - 12.30</span><span>BINDO</span></li>
-          <li class="flex justify-between border-b pb-1"><span>13.20 - 14.00</span><span>BINDO</span></li>
-          <li class="flex justify-between"><span>14.00 - 14.40</span>
-        </ul>
-      </div>
-
-      <!-- Selasa -->
-      <div class="border border-gray-300 rounded-xl p-5">
-        <h2 class="text-xl font-semibold mb-3">Selasa</h2>
-        <ul class="space-y-2">
-          <li class="flex justify-between border-b pb-1"><span>08.00 - 08.40</span><span>BINDO</span></li>
-          <li class="flex justify-between border-b pb-1"><span>08.40 - 09.20</span><span>BINDO</span></li>
-          <li class="flex justify-between border-b pb-1"><span>10.00 - 10.40</span><span>BBALI</span></li>
-          <li class="flex justify-between border-b pb-1"><span>10.40 - 11.20</span><span>BBALI</span></li>
-          <li class="flex justify-between border-b pb-1"><span>11.20 - 12.00</span><span>MTK</span></li>
-          <li class="flex justify-between"><span>13.20 - 12.40</span><span>INF</span></li>
-        </ul>
-      </div>
-
-      <!-- Rabu -->
-      <div class="border border-gray-300 rounded-xl p-5">
-        <h2 class="text-xl font-semibold mb-3">Rabu</h2>
-        <ul class="space-y-2">
-          <li class="flex justify-between border-b pb-1"><span>07.00 - 07.40</span><span>PP</span></li>
-          <li class="flex justify-between border-b pb-1"><span>07.40 - 08.20</span><span>PP</span></li>
-          <li class="flex justify-between border-b pb-1"><span>08.20 - 09.00</span><span>IPA</span></li>
-          <li class="flex justify-between"><span>10.00 - 12.40</span><span>KoKulikuler</span></li>
-        </ul>
-      </div>
-
-      <!-- Kamis -->
-      <div class="border border-gray-300 rounded-xl p-5">
-        <h2 class="text-xl font-semibold mb-3">Kamis</h2>
-        <ul class="space-y-2">
-          <li class="flex justify-between border-b pb-1"><span>07.00 - 07.40</span><span>MTK</span></li>
-          <li class="flex justify-between border-b pb-1"><span>07.40 - 08.20</span><span>BING</span></li>
-          <li class="flex justify-between border-b pb-1"><span>08.20 - 09.00</span><span>BING</span></li>
-          <li class="flex justify-between border-b pb-1"><span>10.00 - 10.40</span><span>BING</span></li>
-          <li class="flex justify-between border-b pb-1"><span>10.40 - 11.20</span><span>INF</span></li>
-          <li class="flex justify-between"><span>11.20 - 12.00</span><span>INF</span></li>
-        </ul>
-      </div>
-
-      <!-- Jumat -->
-      <div class="border border-gray-300 rounded-xl p-5">
-        <h2 class="text-xl font-semibold mb-3">Jumat</h2>
-        <ul class="space-y-2">
-          <li class="flex justify-between border-b pb-1"><span>07.00 - 07.30</span><span>Pertemuan Pagi Ceria</span></li>
-          <li class="flex justify-between border-b pb-1"><span>07.30 - 08.10</span><span>Ekstrakurikuler</span></li>
-          <li class="flex justify-between border-b pb-1"><span>08.10 - 08.50</span><span>Ekstrakurikuler</span></li>
-          <li class="flex justify-between border-b pb-1"><span>09.20 - 10.00</span><span>Kokurikuler</span></li>
-          <li class="flex justify-between border-b pb-1"><span>10.00 - 10.40</span><span>Kokurikuler</span></li>
-          <li class="flex justify-between border-b pb-1"><span>10.40 - 11.20</span><span>Kokurikuler</span></li>
-          <li class="flex justify-between border-b pb-1"><span>11.20 - 12.00</span><span>Kokurikuler</span></li>
-          <li class="flex justify-between border-b pb-1"><span>12.30 - 13.10</span><span>Kokurikuler</span></li>
-          <li class="flex justify-between"><span>13.10 - 13.50</span><span>Kokurikuler</span></li>
-        </ul>
-      </div>
-
-    </div>
+<body class="bg-white text-black min-h-screen flex items-center justify-center p-6">
+  <div class="w-full max-w-2xl border border-black rounded-lg shadow p-6">
+    <h1 class="text-2xl font-bold text-center mb-4">Jadwal Kelas 7B<br><span id="hari" class="underline"></span></h1>
+    <table class="w-full table-auto border-collapse">
+      <thead>
+        <tr class="bg-black text-white">
+          <th class="border px-4 py-2">Waktu</th>
+          <th class="border px-4 py-2">Mata Pelajaran</th>
+        </tr>
+      </thead>
+      <tbody id="jadwal-list" class="text-center text-sm">
+        <!-- Diisi otomatis oleh JS -->
+      </tbody>
+    </table>
+    <p class="text-gray-300 text-xs text-center mt-4 italic">Search And RealTime Processing By Bramantaraa</p>
   </div>
-
 </body>
 </html>
