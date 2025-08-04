@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Kelas VIIB</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Custom CSS untuk dark mode */
+    body {
+      background-color: #1a202c; /* Warna dark grey untuk body */
+      color: #cbd5e0; /* Warna teks yang lebih terang */
+    }
+
+    .card {
+      background-color: #2d3748; /* Warna dark grey yang sedikit lebih terang dari body */
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .header-text {
+      color: #f7fafc; /* Warna teks header yang lebih putih */
+    }
+    
+    .button-info {
+        background-image: linear-gradient(to top left, #01ceeb, #a052ff); /* Gradient warna tombol */
+    }
+
+    /* Efek hover untuk tombol */
+    button {
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Tambahin shadow biar keliatan pop-out */
+    }
+
+    /* Warna untuk text di setiap card */
+    .text-blue-500 { color: #63b3ed; }
+    .text-green-500 { color: #68d391; }
+    .text-purple-500 { color: #b794f4; }
+  </style>
+</head>
+<body class="font-sans">
+  <div class="min-h-screen flex flex-col items-center p-4">
+    <header class="w-full max-w-4xl card rounded-xl p-6 flex justify-between items-center mb-6">
+      <div>
+        <h1 class="text-3xl font-bold header-text">Data Kelas VIIB</h1>
+        <p class="text-gray-400">Tahun Ajaran 2025/2026</p>
+      </div>
+    </header>
+
+    <main class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="card rounded-xl p-6">
+        <h2 class="text-xl font-semibold text-blue-500 mb-4">Informasi Kelas</h2>
+        <div class="space-y-4">
+          <button class="button-info w-full text-white font-bold py-3 px-6 rounded-lg">Jadwal Kelas</button>
+          <button class="button-info w-full text-white font-bold py-3 px-6 rounded-lg">Kesepakatan Kelas (PJOK)</button>
+        </div>
+      </div>
+
+      <div class="card rounded-xl p-6 flex flex-col justify-center items-center text-center">
+        <h2 class="text-xl font-semibold text-green-500 mb-2">Total Siswa Hadir</h2>
+        <p id="siswa-hadir" class="text-5xl font-bold header-text">Memuat...</p>
+      </div>
+
+      <div class="card rounded-xl p-6 col-span-1 md:col-span-2">
+        <h2 class="text-xl font-semibold text-purple-500 mb-4">Memory Kelas</h2>
+        <p class="text-gray-500">Belum Ada :(</p>
+      </div>
+    </main>
+
+    <footer class="mt-8 text-sm text-gray-500 text-center">
+      &copy; 2025 Kelas VIIB - SMP Negeri 1 Pekutatan. Dibuat oleh bramantata untuk siswa.
+    </footer>
+  </div>
+
+  <script>
+    // Simulasi data siswa hadir
+    const totalSiswa = 35;
+    const siswaHadir = 34;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("siswa-hadir").innerText = `${siswaHadir} / ${totalSiswa}`;
+    });
+  </script>
+</body>
+</html>
